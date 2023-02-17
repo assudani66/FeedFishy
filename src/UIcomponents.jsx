@@ -2,9 +2,9 @@ import React, { useState } from "react"
 import { useContext } from "react"
 import { feedContext } from "./feedContext"
 
-export const Logo = () => {
+export const Logo = (props) => {
     return(
-    <h1 className="logo">Hello kitty</h1>
+    <h1 className="logo">{props.name}</h1>
     )
 }
 
