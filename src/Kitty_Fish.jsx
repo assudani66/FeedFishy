@@ -91,12 +91,12 @@ export function Kitty_Fish(props) {
   );
 }
 
-useGLTF.preload("/just_a_hungry_fish.glb");
+useGLTF.preload("./just_a_hungry_fish.glb");
 
 
 export function HelloKitty_mouth(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/HelloKitty_mouth.glb");
+  const { nodes, materials, animations } = useGLTF("./HelloKitty_mouth.glb");
   const { actions } = useAnimations(animations, group);
   
   return (
@@ -116,4 +116,4 @@ export function HelloKitty_mouth(props) {
   );
 }
 
-useGLTF.preload("/HelloKitty_mouth.glb")
+useGLTF.preload("./HelloKitty_mouth.glb")
