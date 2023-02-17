@@ -6,7 +6,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export default function Kitty_static(props) {
-  const { nodes, materials } = useGLTF("/just_a_hungry_staticBackground.glb");
+  const { nodes, materials } = useGLTF("./just_a_hungry_staticBackground.glb");
   return (
     <group {...props} dispose={null}>
       <group name="Scene">
@@ -42,4 +42,4 @@ export default function Kitty_static(props) {
   );
 }
 
-useGLTF.preload("/just_a_hungry_staticBackground.glb");
+useGLTF.preload("./just_a_hungry_staticBackground.glb");

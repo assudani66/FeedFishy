@@ -5,7 +5,7 @@ import { act, useFrame, useThree } from "@react-three/fiber";
 
 export function Kitty_Fish(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/just_a_hungry_fish.glb");
+  const { nodes, materials, animations } = useGLTF("./just_a_hungry_fish.glb");
   const { actions } = useAnimations(animations, group);
   const [currentTime,setCurrentTime]=useState(0)
   const [feed,setFeed] = useState(false)

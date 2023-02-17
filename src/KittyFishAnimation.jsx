@@ -5,7 +5,7 @@ import { feedContext } from "./feedContext";
 
 export function KittyFishAnimation(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/HelloKitty_animation.glb");
+  const { nodes, materials, animations } = useGLTF("./HelloKitty_animation.glb");
   const { actions } = useAnimations(animations, group);
   const [time, setTime] = useState(0);
 
@@ -95,4 +95,4 @@ export function KittyFishAnimation(props) {
   );
 }
 
-useGLTF.preload("/HelloKitty_animation.glb");
+useGLTF.preload("./HelloKitty_animation.glb");

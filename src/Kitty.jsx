@@ -5,7 +5,7 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 
 export default function Kitty_Fish(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/just_a_hungry_cat.glb");
+  const { nodes, materials, animations } = useGLTF("./just_a_hungry_cat.glb");
   const { actions } = useAnimations(animations, group);
 
   useEffect(()=>{
@@ -89,6 +89,6 @@ export default function Kitty_Fish(props) {
   );
 }
 
-useGLTF.preload("/just_a_hungry_cat.glb");
+useGLTF.preload("./just_a_hungry_cat.glb");
 
 
