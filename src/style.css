@@ -1,38 +1,100 @@
 html,
 body,
+
 #root
 {
+    --background-color: #06013a;
+    --text-color: #FFFF88;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     /* overflow: hidden; */
-    background: #06013a;
+    background: var(--background-color);
 }
+
 .gridContainer{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+.ThreeCanvas{
+    width: 600px;
+    height: 300px;
+    border: 0px;
+}
 .logo{
-    
+    color: var(--text-color);
     font-family: 'Space Grotesk';
     font-style: normal;
     font-weight: 700;
-    font-size: 89.7806px;
-    line-height: 115px;
+    font-size: 60px;
+    margin: 10px;
 }
+.subText{
+    color: var(--text-color);
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    
 
+}
 .button{
-padding-left:30px;
-padding-right:30px;
-padding-bottom: 10px;
-padding-top: 10px;
-background-color: #E1E100;
-font-family: 'Space Grotesk';
-font-size: 30px;
-color: #06013a;
-border-radius: 33px;
+    background-color:var(--background-color);
+    padding: 0px;
+    border: 0px;
+    size: 10px;
+}
+.button-image{
+    width :150px;
+    height :150px;
+    margin: 0px;
+    padding: 0px;
+}
+.fishGauge{
+    width: 300px;
+    height: 25.7px;
+    background: rgba(206, 206, 2, 0.27);
+    border: 3px solid #141525;
+    border-radius: 15px;
+    margin-top: 50px;
+}
+.highlightedFishGauge{
+    height: 20px;
+    background: #FFFF22;
+    box-shadow: 0px 0px 11px #CECE02;
+    border-radius: 3px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 3px;
+}
+.scoreDisplay{
+width: 100px;
+height: 40px;
+position: relative;
+border: 2px solid #000000;
+top: 87px;
+left :130px;
+background: #CECE02;
+border-radius: 24.1111px;
+z-index: 1;
+display: flex;
+flex-direction: row;
+}
+.scoreText{
+    font-family: 'Space Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 28.9749px;
+margin-top: 3px;
+}
+.fishIndicator{
+    position: relative;
+    left: 50%;
+    transform: translate(-175px);
+    top: -55px;
 }

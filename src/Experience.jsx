@@ -4,10 +4,9 @@ import Kitty from './Kitty'
 import { KittyFishAnimation } from './KittyFishAnimation';
 import Kitty_static from './Kitty_static';
 import * as THREE from "three"
-import { FeedContextProvider } from './feedContext';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 extend({ OrbitControls })
-const CameraLocation ={x : 0.015513230647789917, y : 1.0692114647034479,z : 2.57697802146518}
+const CameraLocation = {x: 0.0003941118749341708, y: 0.6759516532057666, z: 2.007868876840685}
 
 export default function Experience()
 {
@@ -21,10 +20,11 @@ export default function Experience()
     // )
 
     useFrame((state)=>{
+        // console.log(state.camera.position)
         const vec = new THREE.Vector3()
         vec.set(CameraLocation.x,CameraLocation.y,CameraLocation.z)
-        // state.camera.position.lerp(vec,0.03)
-        state.camera.lookAt(0,0,0)
+        state.camera.position.lerp(vec,0.01)
+        state.camera.lookAt(0,0.3,0)
     })
     
     return <>
