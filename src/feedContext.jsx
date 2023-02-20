@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 
 
 
@@ -55,5 +55,31 @@ export const FishPositionProvider = (props) => {
     </fishPositionContext.Provider>)
 }
 
+
 export const useFishPostionContext = () => 
     useContext(fishPositionContext)
+
+export const fishElement = createContext()
+
+export const FishElementProvider = (props) => {
+    const elementRef = useRef(null)
+    return(
+        <fishElement.Provider value = {elementRef}>
+            {props.children}
+        </fishElement.Provider>
+    )
+} 
+
+
+export const initialFishPosition = createContext({})
+
+export const InitialFishPositionProvider = (props) => {
+    const [initialPosition,setIntialPosition] = useState(0)
+    return(
+        <initialFishPosition.Provider value = {{initialPosition,setIntialPosition}}>
+            {props.children}
+        </initialFishPosition.Provider>
+    )
+}
+
+
