@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useContext } from "react"
-import { feedContext, scoreContext, useWidthContext, widthContext } from "./feedContext"
+import { feedContext, fishPositionContext, scoreContext, useFishPostionContext, useWidthContext, widthContext } from "./feedContext"
 
 export const Logo = (props) => {
     return(<div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
@@ -13,6 +13,7 @@ export const Logo = (props) => {
 export const Button = (props) => {
     const {running, setRunning} = useContext(feedContext);
     const {highLightedWidth,setHighLightedWidth} = useWidthContext()
+    const {fishPosition,setFishPosition} = useFishPostionContext()
     const {score,setScore} = useContext(scoreContext)
     const imageSrc = {
         normal : "https://ik.imagekit.io/Phantomcat20/FeedFishy/Feed_button.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1676660041392",
@@ -23,6 +24,7 @@ export const Button = (props) => {
         setRunning(!running)
         setScore(score=> score+1)
         setHighLightedWidth(highLightedWidth => (200*Math.pow(0.7,score)))
+        console.log(fishPosition)
     }
 
 
@@ -35,13 +37,31 @@ export const Button = (props) => {
 
 export const FishGauge = () => {
     const {highLightedWidth,setHighLightedWidth} = useWidthContext()
-    const Limits = ["-175px","175px"]
+    const Limits = ["-150px","150px"]
+    const {fishPosition,setFishPosition} = useFishPostionContext()
+    const [direction,setDirection] = useState(1)
+
+    useEffect(() => {
+        const id = setInterval(() => { 
+          if (fishPosition >= 150) {
+            setDirection(-1)
+          } else if (fishPosition <= -150) {
+            setDirection(1)
+          }
+          setFishPosition(fishPosition=> fishPosition + direction);
+        }, 10)
+        return () => clearInterval(id);
+      }, [direction, fishPosition]);
+      
+
     return(
         <div style={{margin_top: "50px"}}>
         <div className="fishGauge">
-            <div className="highlightedFishGauge" style={{width: `${highLightedWidth}px`}}>
-                <img className="fishIndicator" src="https://ik.imagekit.io/Phantomcat20/FeedFishy/Fishy.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1676541840291"/>
+            <div className="highlightedFishGauge" style={{width: `${highLightedWidth}px`}}>                
             </div>
+            <img className="fishIndicator" src="https://ik.imagekit.io/Phantomcat20/FeedFishy/Fishy.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1676541840291" 
+                style = {{transform :` translate(${fishPosition}px)`}} 
+                />
         </div>
     </div>
     )

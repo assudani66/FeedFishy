@@ -4,7 +4,7 @@ import { Canvas } from '@react-three/fiber'
 import Experience from './Experience.jsx'
 import * as THREE from 'three'
 import { Button, FishGauge, Logo, ScoreDisplay } from './UIcomponents'
-import { FeedContextProvider, ScoreContextProvider, WidthContextProvider } from './feedContext'
+import { FeedContextProvider, FishPositionProvider, ScoreContextProvider, WidthContextProvider } from './feedContext'
 
 const CameraLocation = {x: 0.0003941118749341708, y: 0.6759516532057666, z: 2.007868876840685}
 export default function App() {
@@ -12,6 +12,7 @@ export default function App() {
         <div className='gridContainer' >
             <ScoreContextProvider>
             <WidthContextProvider>
+                <FishPositionProvider>
             <FeedContextProvider>
                 <Logo name="Feed Fishy" />
                 <div className="ThreeCanvas">
@@ -36,6 +37,7 @@ export default function App() {
                 <FishGauge/>
                 <Button name="Feed me" />
             </FeedContextProvider>
+            </FishPositionProvider>
             </WidthContextProvider>
             </ScoreContextProvider>
         </div>

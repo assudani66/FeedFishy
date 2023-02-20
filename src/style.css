@@ -39,8 +39,6 @@ body,
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
-    
-
 }
 .button{
     background-color:var(--background-color);
@@ -60,7 +58,7 @@ body,
     background: rgba(206, 206, 2, 0.27);
     border: 3px solid #141525;
     border-radius: 15px;
-    margin-top: 50px;
+    margin-top: 80px;
 }
 .highlightedFishGauge{
     height: 20px;
@@ -93,8 +91,8 @@ font-size: 28.9749px;
 margin-top: 3px;
 }
 .fishIndicator{
+    z-index: 1;
     position: relative;
-    left: 50%;
-    transform: translate(-175px);
-    top: -55px;
+    top: -75px;
+    left: 125px;
 }

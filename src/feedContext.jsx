@@ -1,7 +1,9 @@
 import { createContext, useContext, useState } from "react";
 
-export const feedContext = createContext({})
 
+
+
+export const feedContext = createContext({})
 
 export const FeedContextProvider = (props) =>{
     
@@ -42,4 +44,16 @@ export const ScoreContextProvider = (props) => {
 }
 
 
+export const fishPositionContext = createContext({})
 
+export const FishPositionProvider = (props) => {
+    const [fishPosition,setFishPosition] = useState(0)
+
+    return(
+    <fishPositionContext.Provider value = {{fishPosition,setFishPosition}}>
+        {props.children}
+    </fishPositionContext.Provider>)
+}
+
+export const useFishPostionContext = () => 
+    useContext(fishPositionContext)
