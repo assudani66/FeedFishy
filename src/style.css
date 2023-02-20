@@ -41,10 +41,11 @@ body,
     font-size: 20px;
 }
 .button{
-    background-color:var(--background-color);
+    background-color:transparent;
     padding: 0px;
     border: 0px;
     size: 10px;
+    z-index: 2;
 }
 .button-image{
     width :150px;
@@ -69,6 +70,7 @@ body,
     left: 50%;
     transform: translate(-50%);
     margin-top: 3px;
+    z-index: 2;
 }
 .scoreDisplay{
 width: 100px;
@@ -91,8 +93,58 @@ font-size: 28.9749px;
 margin-top: 3px;
 }
 .fishIndicator{
-    z-index: 1;
+    z-index: 4;
     position: relative;
     top: -75px;
     left: 125px;
+}
+
+.HungryCat {
+	transform-box: fill-box;
+	transform-origin: 50% 50%
+}
+.Frame_3 {
+    z-index: 2;
+    position: relative;
+    top: -75px;
+    left: 125px;
+	animation: 5s linear 0s 1 normal forwards running Frame_3;
+    animation-iteration-count: infinite;
+	transform-box: fill-box;
+	transform-origin: 50% 50%
+}
+@keyframes Frame_3 {
+	0% {
+		transform: translateX(-150px);
+	}
+	50% {
+		transform: translateX(150px) translateX(5px);
+	}
+	100% {
+		transform: translateX(-150px);
+	}
+}
+.tutorialText{
+    position: absolute;
+    top: 409px;
+}
+.tutorialContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.tutorialTextHidden{
+    display: none;
+}
+.tutorial{
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    position:absolute;
+    width: 100%;
+    left: 0px;
+    top:0px;
+    height: 100%;
 }
