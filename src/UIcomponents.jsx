@@ -26,7 +26,6 @@ export const Button = (props) => {
         clicked : "https://ik.imagekit.io/Phantomcat20/FeedFishy/Feed_button_clicked.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1676660027066",
         disabled : "https://ik.imagekit.io/Phantomcat20/FeedFishy/Feed_button_disabled.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1676904253397"
     }
-    
     // useEffect(()=>{
     //     console.log((200-highLightedWidth)/2)
     //     console.log("Limits",Limit1,Limit2)
@@ -50,7 +49,7 @@ export const Button = (props) => {
 
         if (fishPosition >= Limit1 && fishPosition <= Limit2) {
             setRunning(true);
-            setHighLightedWidth(prevWidth => 200 * Math.pow(0.7, score));
+            setHighLightedWidth(200 * Math.pow(0.7, score));
             setDisabled(true);
             setButtonSrc(imageSrc.clicked);
             setTimeout(() => {

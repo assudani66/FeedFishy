@@ -11,8 +11,6 @@ const CameraLocation = {x: 0.0003941118749341708, y: 0.6759516532057666, z: 2.00
 
 export default function App() {
 
-
-
     return (
         <div className='gridContainer' >
             <ScoreContextProvider>
@@ -21,31 +19,28 @@ export default function App() {
                 <FeedContextProvider>
                 <FishElementProvider>
                 <InitialFishPositionProvider>
-                <Tutorial/>
-                <Logo name="Feed Fishy" />
+                    <Tutorial/>
+                    <Logo name="Feed Fishy" />
+                    <div className="ThreeCanvas">
 
-                <div className="ThreeCanvas">
-                <ScoreDisplay/>
-                    <Canvas
-                        gl={{
-                            antialias: true,
-                            toneMapping: THREE.ACESFilmicToneMapping,
-                            outputEncoding: THREE.sRGBEncoding
-                        }}
-                        camera={{
-                            fov: 35,
-                            near: 0.1,
-                            far: 200,
-                            position: [CameraLocation.x, CameraLocation.y, CameraLocation.z]
-                        }}>
-                        <Experience />
-                    </Canvas>
-                </div>
-                <FishGauge/>
-
+                    <ScoreDisplay/>
+                        <Canvas
+                            gl={{
+                                antialias: true,
+                                toneMapping: THREE.ACESFilmicToneMapping,
+                                outputEncoding: THREE.sRGBEncoding
+                            }}
+                            camera={{
+                                fov: 35,
+                                near: 0.1,
+                                far: 200,
+                                position: [CameraLocation.x, CameraLocation.y, CameraLocation.z]
+                            }}>
+                            <Experience />
+                        </Canvas>
+                    </div>
+                    <FishGauge/>
                     <Button name="Feed me"/>
-                    
-
                     
                     </InitialFishPositionProvider>
                     </FishElementProvider>
