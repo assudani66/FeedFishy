@@ -15,9 +15,9 @@ export const Button = (props) => {
     const {highLightedWidth,setHighLightedWidth} = useWidthContext()
     const {fishPosition,setFishPosition} = useFishPostionContext()
     const {score,setScore} = useContext(scoreContext)
-    const {initialPosition,setIntialPosition} = useContext(initialFishPosition)
-    const [Limit1,setLimit1] = useState(50)
-    const [Limit2,setLimit2] = useState(250)
+    const {initialPosition} = useContext(initialFishPosition)
+    const [Limit1,setLimit1] = useState(0)
+    const [Limit2,setLimit2] = useState(300)
     const elementRef = useContext(fishElement)
     const [disabled, setDisabled] = useState(false);
     
@@ -26,39 +26,50 @@ export const Button = (props) => {
         clicked : "https://ik.imagekit.io/Phantomcat20/FeedFishy/Feed_button_clicked.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1676660027066",
         disabled : "https://ik.imagekit.io/Phantomcat20/FeedFishy/Feed_button_disabled.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1676904253397"
     }
-    // useEffect(()=>{
-    //     console.log((200-highLightedWidth)/2)
-    //     console.log("Limits",Limit1,Limit2)
-    //     console.log("highlighted Width", highLightedWidth)
-    //     console.log("FishPosition",fishPosition)
-    //     console.log("running",running)
-    // }, [Limit1,Limit2,highLightedWidth,fishPosition])
+
+    useEffect(()=>{
+        console.log((200-highLightedWidth)/2)
+        console.log("Limits",Limit1,Limit2)
+        console.log("highlighted Width", highLightedWidth)
+        // console.log("FishPosition",fishPosition)
+        console.log("running",running)
+    }, [Limit1,Limit2,highLightedWidth,fishPosition])
 
     const handleFishGauge = () => {
+
+       console.log(disabled)
         if (disabled) {
             return;
         }
 
-        setScore(prevScore => prevScore + 1);
-        setLimit1((50 + (200 - highLightedWidth) / 2));
-        setLimit2(250 - (200 - highLightedWidth) / 2);
-
         const element = elementRef.current;
         const rect = element.getBoundingClientRect();
-        setFishPosition(rect.x - initialPosition);
-
+        
+        // setFishPosition(rect.x - initialPosition);
+        const fishPosition = rect.x - initialPosition
+        console.log("fishPosition",fishPosition)
         if (fishPosition >= Limit1 && fishPosition <= Limit2) {
+
+            setScore(prevScore => prevScore + 1);
             setRunning(true);
-            setHighLightedWidth(200 * Math.pow(0.7, score));
+            const highLightedWidth = 300 * Math.pow(0.7, score + 1 )
+            setHighLightedWidth(highLightedWidth);
             setDisabled(true);
             setButtonSrc(imageSrc.clicked);
-            setTimeout(() => {
-                setDisabled(false);
-                setButtonSrc(imageSrc.normal);
-            }, 3000);
+            const higherLimit1 = ((300 - highLightedWidth) / 2)
+            console.log("highierLimit1", higherLimit1)
+            setLimit1(higherLimit1);
+            setLimit2(300 - (300 - highLightedWidth) / 2);
+
         } else {
             setRunning(false);
         }
+
+        setTimeout(() => {
+            setDisabled(false);
+            setButtonSrc(imageSrc.normal);
+        }, 1000);
+
     }
 
     const [buttonSrc, setButtonSrc] = useState(imageSrc.normal);
@@ -105,7 +116,7 @@ export const Tutorial = () => {
 
     const {score} = useContext(scoreContext)
     const [tutorial,setTutorial] = useState(true)
-    
+
     return(
         <div className={score<1?'tutorial':'tutorialTextHidden'} onClick={()=>setTutorial(false)} ><div className='tutorialContainer'>
         <img src='https://ik.imagekit.io/Phantomcat20/FeedFishy/Tutorial.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1676916952884' 
@@ -113,5 +124,32 @@ export const Tutorial = () => {
         />
                         </div>
                 </div>
+    )
+}
+
+export const EndScreen = () =>{
+    const [win,setWin] = useState(true)
+    const {score,setScore} = useContext(scoreContext)
+    const finalScore = 10
+
+    const resetGame = () => {
+        setScore(1)
+    }
+
+    return(
+    <div className="endTitle" 
+    // style={{display : "none"}}
+    style = {{display: score>= finalScore? "flex" : "none"}}
+    >
+        <div className="endScreenCard">
+            <p className="resultWin">You Win!</p>
+            <p className="resultPara">Thanks, for feeding her</p>
+            <button className="restartButton">
+                <img src="https://ik.imagekit.io/Phantomcat20/FeedFishy/Restart.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1677157719847" 
+                style={{paddingTop:"17px" ,paddingBottom:"17px",paddingLeft:"20px", paddingRight:"20px" }} onClick = {resetGame}/>
+                
+            </button>
+        </div>
+    </div>
     )
 }

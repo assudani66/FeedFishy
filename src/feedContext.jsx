@@ -1,8 +1,6 @@
 import { createContext, useContext, useRef, useState } from "react";
 
 
-
-
 export const feedContext = createContext({})
 
 export const FeedContextProvider = (props) =>{
@@ -22,7 +20,7 @@ export const widthContext = createContext({})
 
 export const WidthContextProvider = (props) => {
 
-    const [highLightedWidth,setHighLightedWidth] = useState(200)
+    const [highLightedWidth,setHighLightedWidth] = useState(300)
     
     return <widthContext.Provider value={{highLightedWidth,setHighLightedWidth}}>
         {props.children}

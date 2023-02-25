@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Canvas } from '@react-three/fiber'
 import Experience from './Experience.jsx'
 import * as THREE from 'three'
-import { Button, FishGauge, Logo, ScoreDisplay, Tutorial } from './UIcomponents'
+import { Button, EndScreen, FishGauge, Logo, ScoreDisplay, Tutorial } from './UIcomponents'
 import { FeedContextProvider, FishElementProvider, FishPositionProvider, InitialFishPositionProvider, scoreContext, ScoreContextProvider, WidthContextProvider } from './feedContext'
 import { useContext, useEffect, useState } from 'react'
 
@@ -20,6 +20,7 @@ export default function App() {
                 <FishElementProvider>
                 <InitialFishPositionProvider>
                     <Tutorial/>
+                    <EndScreen/>
                     <Logo name="Feed Fishy" />
                     <div className="ThreeCanvas">
 

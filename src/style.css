@@ -140,11 +140,49 @@ margin-top: 3px;
     display: none;
 }
 .tutorial{
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 2;
-    position:absolute;
-    width: 100%;
-    left: 0px;
-    top:0px;
-    height: 100%;
+background-color: rgba(0, 0, 0, 0.8);
+z-index: 2;
+position:absolute;
+width: 100%;
+left: 0px;
+top:0px;
+height: 100%;
+}
+
+.endTitle{
+    z-index: 3;
+    position: absolute;
+
+}
+
+.endScreenCard{
+margin-top: 515px;
+background: #5873FF;
+box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.25);
+border-radius: 15px;
+width: 459px;
+height: 281px;
+display: flex;
+align-items: center;
+
+flex-direction: column;
+font-family: 'Space Grotesk';
+}
+
+.resultWin{
+font-family: 'Space Grotesk';
+font-style: normal;
+font-weight: 700;
+font-size: 51.452px;
+color: #FFFF12;
+margin-top: 20px;
+margin-bottom: 0px;
+}
+.restartButton{
+
+border: 0px solid #000000;
+border-radius: 110px;
+background: #FFFF12;
+box-shadow: 0px 2.28725px 2.28725px rgba(0, 0, 0, 0.25), 0px 0px 20.5852px rgba(238, 238, 17, 0.53), inset 0px -5.71812px 8.57718px #CECE02, inset 0px 2.28725px 10.8644px rgba(0, 0, 0, 0.5);
+
 }
